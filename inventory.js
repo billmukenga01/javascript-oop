@@ -23,13 +23,14 @@ Inventory.prototype.addItem = function (newItem, price){
     }
 }
 Inventory.prototype.deleteItem = function (deleteItem){
+    if(this[deleteItem].quantity === 0){
+        return 'Nothing to delete';
+    }
     if(this.hasOwnProperty(deleteItem)){
         this[deleteItem].quantity -= 1;
         return 'Deleted';
     }
-    if(this[deleteItem].quantity === 0){
-        return 'Nothing to delete';
-    }
+    
 }
 Inventory.prototype.checkItem = function (checkItem){
     if(this.hasOwnProperty(checkItem)){
